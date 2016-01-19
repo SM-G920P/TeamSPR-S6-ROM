@@ -2,11 +2,11 @@
 # START
 ini_set("force_colorspace","rgba");
 
-ini_set("rom_name",             "920P OJ7 Renegade Aroma");
+ini_set("rom_name",             "TeamSPR S6 BOJ7 v1 Aroma");
 ini_set("rom_version",          "v1");
-ini_set("rom_author",           "nyfl2004");
+ini_set("rom_author",           "mtb3000gt");
 ini_set("rom_device",           "Samsung Galaxy S6");
-ini_set("rom_date",             "11/29/2015");
+ini_set("rom_date",             "1/19/2016");
 
 splash(
     3000,
@@ -31,7 +31,7 @@ theme("touchwiz");
 # WELCOME SCREEN
     
 viewbox(
-    "Welcome to Renegade Rom!!!",
+    "Welcome to TeamSPR S6 Rom!!!",
     "Click Next To Install <b>"+ini_get("rom_name")+
     "</b> for <b>"+ini_get("rom_device")+"</b>\n\n"+
 

@@ -1,6 +1,6 @@
 set_progress(0.0);
 ui_print("******************************");
-ui_print("  920P OJ7 Renegade Aroma v1  ");
+ui_print("  TeamSPR S6 BOJ7 v1 Aroma v1  ");
 ui_print("******************************");
 
 ui_print("- Start Update!");
