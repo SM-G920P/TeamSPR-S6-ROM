@@ -1,0 +1,84 @@
+20:31:11.473	c.m.s.app.MainApp	[MainApp-106]	Country prefix TELEPHONY MANAGER: 1
+20:31:11.476	c.m.s.utils.AlarmUtil	[AlarmUtil-159]	AlarmManager exists: false
+20:31:11.478	c.m.s.utils.AlarmUtil	[AlarmUtil-105]	Alarm wird registriert - 2015.10.23 um 20:00 Uhr
+20:31:11.541	c.m.s.entities.UserProfile	[UserProfile-135]	RawID: 9223372034707292161
+20:31:11.542	c.m.s.entities.UserProfile	[UserProfile-136]	ID: -2147483647
+20:31:11.628	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-33]	Caller: MainActivity
+20:31:11.629	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-66]	Job added!
+20:31:11.629	JOBS	[JOBS-51]	added job id: -2147483647 class: UpdatePhoneContactsJob priority: 1 delay: 0 group : null persistent: false requires network: false
+20:31:11.632	JOBS	[JOBS-51]	main: load factor check. true = (0 < 1)|| (0 * 3 < 1 + 0). consumer thread: false
+20:31:11.632	JOBS	[JOBS-51]	adding another consumer
+20:31:11.633	c.m.s.activities.MainActivity	[MainActivity-455]	updatePage: 0
+20:31:11.633	JOBS	[JOBS-51]	starting consumer Thread-1271
+20:31:11.634	JOBS	[JOBS-51]	running job UpdatePhoneContactsJob
+20:31:11.634	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-20]	Job gestartet...
+20:31:11.635	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-40]	Started...
+20:31:11.646	c.m.s.utils.UpdaterUtil	[UpdaterUtil-29]	Update: 0 => 245
+20:31:11.687	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-89]	[JOB] TELEFONKONTAKTE - count=1801
+20:31:11.688	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=0 | items=200
+20:31:11.710	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=200 | items=200
+20:31:11.739	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=400 | items=200
+20:31:11.757	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=600 | items=200
+20:31:11.774	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=800 | items=200
+20:31:11.780	c.m.s.utils.TutorialManager	[TutorialManager-40]	showHelp: MainActivity | force: false | HomeFragment
+20:31:11.781	c.m.s.utils.TutorialManager	[TutorialManager-122]	showHelp: 1 | 1
+20:31:11.782	c.m.s.fragments.HomeFragment	[HomeFragment-247]	HomeFragment - KEINE Telefonkontakte gefunden
+20:31:11.790	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=1000 | items=200
+20:31:11.810	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=1200 | items=200
+20:31:11.828	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=1400 | items=200
+20:31:11.848	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=1600 | items=200
+20:31:11.867	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-105]	start=1800 | items=1
+20:31:12.016	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-169]	[JOB] TELEFONKONTAKTE => existieren/verwaist/neu: 257/0/257
+20:31:12.017	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-22]	Job erledigt!
+20:31:12.017	JOBS	[JOBS-51]	finished job com.michaelflisar.socialcontactphotosync.jobs.UpdatePhoneContactsJob@31922cad
+20:31:12.017	JOBS	[JOBS-51]	safeRunResult for com.michaelflisar.socialcontactphotosync.jobs.UpdatePhoneContactsJob@31922cad : true. re run:false. cancelled: false
+20:31:12.438	c.m.a.checkout.CheckoutManager	[CheckoutManager-137]	Skus loaded: 1
+20:31:27.739	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:31:27.923	c.m.s.activities.MainActivity	[MainActivity-150]	Interstitial wird geladen...
+20:31:27.923	c.m.s.activities.MainActivity	[MainActivity-592]	onBuyStatusKnown
+20:31:27.924	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:31:27.926	c.m.s.jobs.CalcAutoSyncedContactsJob	[CalcAutoSyncedContactsJob-66]	Job added!
+20:31:27.926	JOBS	[JOBS-51]	added job id: -2147483646 class: CalcAutoSyncedContactsJob priority: 5 delay: 0 group : null persistent: false requires network: false
+20:31:27.927	JOBS	[JOBS-51]	running job CalcAutoSyncedContactsJob
+20:31:27.928	c.m.s.jobs.CalcAutoSyncedContactsJob	[CalcAutoSyncedContactsJob-20]	Job gestartet...
+20:31:27.929	JOBS	[JOBS-51]	main: load factor check. false = (1 < 1)|| (1 * 3 < 0 + 1). consumer thread: false
+20:31:27.929	c.m.s.jobs.CalcAutoSyncedContactsJob	[CalcAutoSyncedContactsJob-44]	countInActivatedNetworks=0 | countInDeactivatedNetworks=0
+20:31:27.930	c.m.s.jobs.CalcAutoSyncedContactsJob	[CalcAutoSyncedContactsJob-22]	Job erledigt!
+20:31:27.931	JOBS	[JOBS-51]	finished job com.michaelflisar.socialcontactphotosync.jobs.CalcAutoSyncedContactsJob@15c926f0
+20:31:27.931	JOBS	[JOBS-51]	safeRunResult for com.michaelflisar.socialcontactphotosync.jobs.CalcAutoSyncedContactsJob@15c926f0 : true. re run:false. cancelled: false
+20:31:32.351	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:31:32.352	c.m.s.activities.MainActivity	[MainActivity-646]	Interstitial ist geladen: true | false
+20:31:32.918	c.m.s.activities.MainActivity	[MainActivity-381]	onDestroy
+20:31:33.063	c.m.s.activities.MainActivity	[MainActivity-135]	Interstitial geladen!
+20:33:27.945	JOBS	[JOBS-51]	Thread-1271: load factor check. true = (0 < 1)|| (0 * 3 < 0 + 0). consumer thread: true
+20:33:27.947	JOBS	[JOBS-51]	didn't allow me to die, re-running Thread-1271
+20:33:27.948	JOBS	[JOBS-51]	re-running consumer Thread-1271
+20:35:27.977	JOBS	[JOBS-51]	Thread-1271: load factor check. true = (0 < 1)|| (0 * 3 < 0 + 0). consumer thread: true
+20:35:27.981	JOBS	[JOBS-51]	didn't allow me to die, re-running Thread-1271
+20:35:27.984	JOBS	[JOBS-51]	re-running consumer Thread-1271
+20:36:58.837	c.m.s.activities.MainActivity	[MainActivity-592]	onBuyStatusKnown
+20:36:58.843	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:36:58.846	c.m.s.jobs.UpdatePhoneContactsJob	[UpdatePhoneContactsJob-33]	Caller: MainActivity
+20:36:58.846	c.m.s.activities.MainActivity	[MainActivity-455]	updatePage: 0
+20:36:58.847	c.m.s.utils.UpdaterUtil	[UpdaterUtil-29]	Update: 245 => 245
+20:36:58.870	c.m.s.utils.TutorialManager	[TutorialManager-40]	showHelp: MainActivity | force: false | HomeFragment
+20:36:58.870	c.m.s.utils.TutorialManager	[TutorialManager-117]	showHelp ignored: 1
+20:36:58.870	c.m.s.fragments.HomeFragment	[HomeFragment-226]	HomeFragment - Telefonkontakte gefunden
+20:36:58.931	c.m.a.checkout.CheckoutManager	[CheckoutManager-137]	Skus loaded: 1
+20:36:58.932	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:36:58.937	c.m.s.activities.MainActivity	[MainActivity-150]	Interstitial wird geladen...
+20:36:58.937	c.m.s.activities.MainActivity	[MainActivity-592]	onBuyStatusKnown
+20:36:58.937	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:37:04.893	c.m.a.checkout.CheckoutManager	[CheckoutManager-80]	checkIfSkuIsBought => mPurchases: 0
+20:37:04.894	c.m.s.activities.MainActivity	[MainActivity-646]	Interstitial ist geladen: true | false
+20:37:05.267	c.m.s.activities.MainActivity	[MainActivity-381]	onDestroy
+20:37:08.292	c.m.s.activities.MainActivity	[MainActivity-135]	Interstitial geladen!
+20:37:27.993	JOBS	[JOBS-51]	Thread-1271: load factor check. true = (0 < 1)|| (0 * 3 < 0 + 0). consumer thread: true
+20:37:27.996	JOBS	[JOBS-51]	didn't allow me to die, re-running Thread-1271
+20:37:27.997	JOBS	[JOBS-51]	re-running consumer Thread-1271
+20:39:28.002	JOBS	[JOBS-51]	Thread-1271: load factor check. true = (0 < 1)|| (0 * 3 < 0 + 0). consumer thread: true
+20:39:28.003	JOBS	[JOBS-51]	didn't allow me to die, re-running Thread-1271
+20:39:28.004	JOBS	[JOBS-51]	re-running consumer Thread-1271
+20:41:28.008	JOBS	[JOBS-51]	Thread-1271: load factor check. true = (0 < 1)|| (0 * 3 < 0 + 0). consumer thread: true
+20:41:28.009	JOBS	[JOBS-51]	didn't allow me to die, re-running Thread-1271
+20:41:28.010	JOBS	[JOBS-51]	re-running consumer Thread-1271

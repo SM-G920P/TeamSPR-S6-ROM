@@ -1,0 +1,15 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<SW-Configuration>
+	<MobileData>
+	<PublicName>SM-G920P</PublicName>
+	</MobileData>
+	<CustomerDataSet>
+	<CSCName>G920PSPT</CSCName>
+	<CSCVersion>3BOJ7</CSCVersion>
+	<NbCustomer>4</NbCustomer>
+	<CustomerData src="/Customer/SPR/customer.xml" />
+	<CustomerData src="/Customer/BST/customer.xml" />
+	<CustomerData src="/Customer/VMU/customer.xml" />
+	<CustomerData src="/Customer/XAS/customer.xml" />
+	</CustomerDataSet>
+</SW-Configuration>

@@ -1,0 +1,225 @@
+﻿###############################################
+# START
+ini_set("force_colorspace","rgba");
+
+ini_set("rom_name",             "920P OJ7 Renegade Aroma");
+ini_set("rom_version",          "v1");
+ini_set("rom_author",           "nyfl2004");
+ini_set("rom_device",           "Samsung Galaxy S6");
+ini_set("rom_date",             "11/29/2015");
+
+splash(
+    3000,
+    "splash"
+);
+
+anisplash(
+    4,
+    "splash/a1", 150,
+    "splash/a2", 150,
+    "splash/a3", 150,
+    "splash/a4", 150,
+    "splash/a5", 150,
+    "splash/a6", 150
+);
+
+fontresload( "0", "ttf/DroidSans.ttf", "10" );
+fontresload( "1", "ttf/DroidSans.ttf", "16" );
+
+theme("touchwiz");
+
+# WELCOME SCREEN
+    
+viewbox(
+    "Welcome to Renegade Rom!!!",
+    "Click Next To Install <b>"+ini_get("rom_name")+
+    "</b> for <b>"+ini_get("rom_device")+"</b>\n\n"+
+
+    " DEVICE: <b><#selectbg_g>"+ini_get("rom_device")+"</#></b>\n"+
+    " VERSION: <b><#selectbg_g>"+ini_get("rom_version")+"</#></b>\n"+
+    " DEVELOPER: <b><#selectbg_g>"+ini_get("rom_author")+"</#></b>\n"+
+    " UPDATED: <b><#selectbg_g>"+ini_get("rom_date")+"</#></b>\n\n\n"+
+
+    "Press <b>Next</b> to Continue the Installation...",
+    "@welcome"
+);
+
+# CHANGELOG
+
+textbox(
+  "Changelog",
+  "Read Changelog:",
+  "icons/info",
+  readfile_aroma("changelog.txt")
+);
+
+# Clear Data
+		selectbox(
+			"Wiping Data",
+			"Choose if You Want To Wipe Data",
+			"@alert",
+			"clear.prop",
+
+			"Do you Want Wipe Data?",       "",                 				2,	#-- Group 1. key = "selected.1"
+			"YES",							"Wipe Data",						0,	#-- selected.1 = 1
+			"NO",							"Don't Wipe Data",					1	#-- selected.1 = 2
+		);
+
+	# Launcher
+	    selectbox(
+			"Launcher",
+			"Launcher",
+			"@customize",
+			"launcher.prop",
+					
+			" Select One ",							"",                 					2,	#-- Group 1. key = "selected.1"			
+			"HTC Sense Home",                       "Install HTC Sense Home",	            1,	#-- selected.1 = 1
+			"TW Note5",								"Install Touchwiz Note5",	        	0,	#-- selected.1 = 2			
+			"TW S6 Stock",						    "Install Touchwiz S6 Stock",	        0	#-- selected.1 = 3			
+	    );
+		
+	### Deleting Touchwiz data
+
+	    selectbox(
+	      "Deleting",
+	      "Choose if You Want to Delete TW Data",
+	      "@apps",
+	      "deletedatatw.prop",
+		  
+		  "It's Necessary if You Switch From Another TW Version",		"",									2,	#-- Group 1. key = "selected.1"
+		  "YES",														"Delete TW Data File",				0,	#-- selected.1 = 1
+		  "NO",															"Don't Delete TW Data File",		1	#-- selected.1 = 2
+	    );	
+	
+	# SystemUI
+		selectbox(
+			"Statusbar",
+			"Statusbar",
+			"@customize",
+			"statusbar.prop",
+				
+			" Select One ",						"",                 						2,	#-- Group 1. key = "selected.1"
+			"Statusbar 3Minit",					"Install Statusbar 3Minit",					1,	#-- selected.1 = 1
+			"Statusbar 3Minit Center Clock",	"Install Statusbar 3Minit Center Clock",	0,	#-- selected.1 = 2
+			"Statusbar Stock",					"Install Statusbar Stock",					0	#-- selected.1 = 3
+		);
+		
+	# Xposed
+
+	    selectbox(
+	      "Xposed Framework",
+	      "Choose if You Want to Install Xposed Framework",
+	      "@customize",
+	      "xposed.prop",
+		  
+		  "Select to Install Xposed Framework",		"",									2,	#-- Group 1. key = "selected.1"
+		  "YES",									"Install Xposed Framework",			1,	#-- selected.1 = 1
+		  "NO",										"Don't Install Xposed Framework",	0	#-- selected.1 = 2
+		);		
+		
+	# Viper4Android and Dolby Surround
+	
+	    selectbox(
+			"Sound Mod",
+			"Viper4Android and Dolby Surround",
+			"@customize",
+			"sound.prop",
+				
+			" Select One ",							"",                 							2,	#-- Group 1. key = "selected.1"
+			"Viper4Android and Dolby Surround",		"Install Viper4Android and Dolby Surround",		1,	#-- selected.1 = 1
+			"Viper4Android",						"Install Viper4Android",						0,	#-- selected.1 = 2
+			"Dolby Surround",						"Install Dolby Surround",						0,	#-- selected.1 = 3
+			"Audio Stock",							"Don't Install Audio Mod",						0	#-- selected.1 = 4
+		);	
+	
+	# BootAnimation
+
+	    selectbox(
+	      "Bootanimation",
+	      "Bootanimation",
+	      "@customize",
+	      "bootanimation.prop",
+		  
+		  "Select One",							"",                 				2,	#-- Group 1. key = "selected.1"
+		  "BootAnimation Renegade",				"Install BootAnimation Renegade",	1,	#-- selected.1 = 1
+		  "BootAnimation Stock",				"Install BootAnimation Stock",		0	#-- selected.1 = 2			
+		);	
+		
+	# Kernel
+
+	    selectbox(
+	      "Kernel",
+	      "Kernel",
+	      "@customize",
+	      "kernel.prop",
+		  
+		  "Select One",							"",                 				2,	#-- Group 1. key = "selected.1"
+		  "Kernel v8",				            "Install Kernel v8",	            1,	#-- selected.1 = 1
+		  "Kernel v9",				            "Install Kernel v9",		        0	#-- selected.1 = 2			
+		);	
+		
+	# Splash
+
+	    selectbox(
+	      "Splash",
+	      "Splash",
+	      "@customize",
+	      "splash.prop",
+		  
+		  "Select One",							"",                 				2,	#-- Group 1. key = "selected.1"
+		  "Splash Renegade",				    "Install Splash Renegade",	        1,	#-- selected.1 = 1
+		  "Splash Stock",				        "Install Splash Stock",		        0	#-- selected.1 = 2			
+		);	
+		
+			
+ini_set("text_next", "Install Now");
+
+###################################################################################################################
+#
+# CHECK
+
+ini_set("text_next", "Install Now");
+ini_set("icon_next", "@installbutton");
+
+viewbox(
+    "Ready to Install",
+    "The Wizard Is Ready to Begin Installation!\n\n"+
+	"Press <b>Install Now</b> to Begin The Installation.\n\n"+
+	"If You Want To Review or Change Any of Your Installation Settings, Press <b>Back</b>. Press Left Hard Button -> Quit Installation to Exit The Wizard.",
+	"@install"
+);
+
+ini_set("text_next", "Next");
+ini_set("icon_next", "@next");
+
+###################################################################################################################
+#
+# INSTALLING
+
+setvar("retstatus",
+ install(
+  "Installing Process",
+  "Installing <b>"+ini_get("rom_name")+"</b>...\n"+
+  "Please Wait...",
+  "@install",
+  "Done! Press <b>Next</b> Button"
+  )
+);
+
+ini_set("text_next", "Finish");
+ini_set("icon_next", "@finish");
+
+checkviewbox(
+    "Installation Completed!",
+    "<#selectbg_g><b>Congratulation...</b></#>\n\n"+
+    "<b>"+ini_get("rom_name")+"</b> Has Been Installed Into Your Device!\n\n"+
+	"Installer Status: "+getvar("retstatus")+"\n\n",
+    "@welcome",
+    "Reboot Your Device Now.",
+    "0",
+    "reboot_it"
+);
+
+if getvar("reboot_it")=="1" then
+  reboot("onfinish");
+endif;

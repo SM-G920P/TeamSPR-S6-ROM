@@ -1,0 +1,14 @@
+CHANGELOG 
+v1
+
+
+-Add Touchwiz Note5 Launcher
+-Add HTC Sense Launcher
+-Add choice of Boot BootAnimation
+
+
+-Add Xposed Framework(v78)
+
+-Add Viper4Android
+-Add Dolby Sound
+-Add choice of kernel

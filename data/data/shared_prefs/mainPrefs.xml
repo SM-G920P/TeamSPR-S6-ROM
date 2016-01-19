@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="lastChangelog" value="245" />
+    <int name="imageHistoryMode" value="2" />
+    <int name="shownTuts" value="2" />
+    <string name="pathHistory">/storage/emulated/0/socialcontactphotosync/history/</string>
+    <boolean name="showIntro" value="false" />
+    <string name="pathFolderMode">/storage/emulated/0/socialcontactphotosync/images/</string>
+</map>

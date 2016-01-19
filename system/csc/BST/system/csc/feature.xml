@@ -1,0 +1,213 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<!-- It can be added for each operators like below form
+
+<ABC>                       -> sales code
+<sapient>true</sapient>         -> feature1
+<burton>false</burton>          -> feature2
+<libtech>true</libtech>         -> feature3
+.
+.
+</ABC>
+
+each name of tags are will be environment variable with "ro.csc."
+ex) "ro.csc.sapient", "ro.csc.burton", "ro.csc.libtech" <== you could use them at any section.
+also, should be added between <FeatureSet>
+ and </FeatureSet> .
+jhwan.kim@hdlnc.com  -->
+<SamsungMobileFeature>
+
+<Country></Country>
+<CountryISO></CountryISO>
+<SalesCode></SalesCode>
+
+<!-- BST -->
+<FeatureSet>
+
+<!-- Common -->
+<CscFeature_Common_DisableMenu4GalSearch>true</CscFeature_Common_DisableMenu4GalSearch>
+<CscFeature_Common_SweepOperationArea>ExcludeAvatar</CscFeature_Common_SweepOperationArea>
+<CscFeature_Common_SetupWizard_Spr>true</CscFeature_Common_SetupWizard_Spr>
+
+<!-- Wi-Fi -->
+<CscFeature_Wifi_ConfigMifLockForHWRev>10</CscFeature_Wifi_ConfigMifLockForHWRev>
+
+<!-- Camera -->
+<CscFeature_Camera_DisableGPSMenu>false</CscFeature_Camera_DisableGPSMenu>
+<CscFeature_Camera_DefaultStorage>phone</CscFeature_Camera_DefaultStorage>
+<CscFeature_Camera_DefaultQuality>superfine</CscFeature_Camera_DefaultQuality>
+<CscFeature_Camcorder_DefaultQuality>superfine</CscFeature_Camcorder_DefaultQuality>
+<CscFeature_Camera_ShutterSoundMenu>false</CscFeature_Camera_ShutterSoundMenu>
+<CscFeature_Camcorder_DoNotPauseMusic>false</CscFeature_Camcorder_DoNotPauseMusic>
+<CscFeature_Camera_CameraFlicker>60hz</CscFeature_Camera_CameraFlicker>
+<CscFeature_Camera_DefaultSideMenu>selfcamera,flashmode,shootingmode</CscFeature_Camera_DefaultSideMenu>
+<CscFeature_Camera_CamcorderEnablePromptPopupToSelectRecMode>true</CscFeature_Camera_CamcorderEnablePromptPopupToSelectRecMode>
+
+<!-- Message -->
+
+<CscFeature_Message_MinSlideDuration>5</CscFeature_Message_MinSlideDuration>
+<CscFeature_Message_DisableMenuRequestMmsReadReport>true</CscFeature_Message_DisableMenuRequestMmsReadReport>
+<CscFeature_Message_DisableMenuSmsDeliveryReports>true</CscFeature_Message_DisableMenuSmsDeliveryReports>
+<CscFeature_Message_DisableMenuRequestMmsDeliveryReport>true</CscFeature_Message_DisableMenuRequestMmsDeliveryReport>
+<CscFeature_Message_DisableMenuWapPush>true</CscFeature_Message_DisableMenuWapPush>
+<CscFeature_Message_DisableMenuWapPushServiceLoading>true</CscFeature_Message_DisableMenuWapPushServiceLoading>
+<CscFeature_Message_DisableMenuMmsCreationMode>true</CscFeature_Message_DisableMenuMmsCreationMode>
+<CscFeature_Message_EnableLocalSymbolTable>false</CscFeature_Message_EnableLocalSymbolTable>
+<CscFeature_Message_EnableUnifiedMmsRetrieveMenu>true</CscFeature_Message_EnableUnifiedMmsRetrieveMenu>
+<CscFeature_Message_ReplaceLabel4RetreivedMsg>false</CscFeature_Message_ReplaceLabel4RetreivedMsg>
+<CscFeature_Message_EnableSmsSubject>true</CscFeature_Message_EnableSmsSubject>
+<CscFeature_Message_EnableAnonymousThread>false</CscFeature_Message_EnableAnonymousThread>
+<CscFeature_Message_EnableMesageAutoView>false</CscFeature_Message_EnableMesageAutoView>
+<CscFeature_Message_MmsModeCaptureVideoMaxSize>1018880</CscFeature_Message_MmsModeCaptureVideoMaxSize>
+<CscFeature_Message_MmsModeCaptureVideoBitRate>0</CscFeature_Message_MmsModeCaptureVideoBitRate>          <!-- 0 = use camcorder default value-->
+<CscFeature_Message_MmsModeCaptureVideoMaxDuration>0</CscFeature_Message_MmsModeCaptureVideoMaxDuration>  <!-- 0 = use camcorder default value-->
+<CscFeature_Message_MmsModeCaptureVideoResolution></CscFeature_Message_MmsModeCaptureVideoResolution>     <!-- "" = use camcorder default value-->
+<CscFeature_Message_EnableExtendSlideTimeToMediaDuration>true</CscFeature_Message_EnableExtendSlideTimeToMediaDuration>
+<CscFeature_Message_EnableSmsForwardPrefix>true</CscFeature_Message_EnableSmsForwardPrefix>
+<CscFeature_Message_SmsDiscardPrefix>//</CscFeature_Message_SmsDiscardPrefix>
+<CscFeature_Message_DisableMenuSIMMessages>true</CscFeature_Message_DisableMenuSIMMessages>
+<CscFeature_Message_DisableCopyToSim>true</CscFeature_Message_DisableCopyToSim>
+<CscFeature_Message_DisableMenuCBChannel>true</CscFeature_Message_DisableMenuCBChannel>
+<CscFeature_Message_DisableMenuSMSC>true</CscFeature_Message_DisableMenuSMSC>
+<CscFeature_Message_EnableSegmentedSMS>true</CscFeature_Message_EnableSegmentedSMS>
+<CscFeature_Message_DisableLogs>true</CscFeature_Message_DisableLogs>
+<CscFeature_Message_DisableMenuCBMessage>true</CscFeature_Message_DisableMenuCBMessage>
+<CscFeature_Message_DisableMenuSmsInputMode>true</CscFeature_Message_DisableMenuSmsInputMode>
+<CscFeature_Message_DisableSmscEditable>true</CscFeature_Message_DisableSmscEditable>
+<CscFeature_Message_CheckTelNumAreaCode>true</CscFeature_Message_CheckTelNumAreaCode>
+<CscFeature_Message_CMASOperator>us-spr</CscFeature_Message_CMASOperator>
+<CscFeature_Message_MinRecipientLengthAs>3</CscFeature_Message_MinRecipientLengthAs>
+<CscFeature_Message_MaxRecipientLengthAs>17</CscFeature_Message_MaxRecipientLengthAs>
+<CscFeature_Message_ConfigLcdActionForNewMsg>OFF</CscFeature_Message_ConfigLcdActionForNewMsg>
+<CscFeature_Message_ConfigBlockNotification>OFF</CscFeature_Message_ConfigBlockNotification>
+<CscFeature_Message_LinkDAUSA2>true</CscFeature_Message_LinkDAUSA2>
+<CscFeature_Message_ConfigFreeMessage>on</CscFeature_Message_ConfigFreeMessage>
+<CscFeature_Message_EnableCdmaCmasOverLte>true</CscFeature_Message_EnableCdmaCmasOverLte>
+
+<!-- Clock -->
+<CscFeature_Clock_EnableVolumeKeySetting>true</CscFeature_Clock_EnableVolumeKeySetting>
+<CscFeature_Clock_EnableAlarmSnoozeDefault>true</CscFeature_Clock_EnableAlarmSnoozeDefault>
+
+<!-- [RIL] Sprint / Global Mode -->
+<CscFeature_RIL_ConfigNetworkTypeCapability>SPR-BST-GLB-USA</CscFeature_RIL_ConfigNetworkTypeCapability>
+<CscFeature_RIL_SupportVolteTotalCallTime>true</CscFeature_RIL_SupportVolteTotalCallTime>
+
+<!-- Settings -->
+<CscFeature_Setting_DisableMenuFindMyMobile>true</CscFeature_Setting_DisableMenuFindMyMobile>
+<CscFeature_Settings_FindMyMobile>false</CscFeature_Settings_FindMyMobile>
+<CscFeature_Setting_EnableHwVersionDisplay>true</CscFeature_Setting_EnableHwVersionDisplay>
+<CscFeature_Setting_EnableConversion4MEIDAndESN>true</CscFeature_Setting_EnableConversion4MEIDAndESN>
+<CscFeature_Setting_EnableRoamingMenu>false</CscFeature_Setting_EnableRoamingMenu>
+<CscFeature_Setting_EnableMultipleSWUpdate>true</CscFeature_Setting_EnableMultipleSWUpdate>
+<CscFeature_Setting_EnableSimUnlock>true</CscFeature_Setting_EnableSimUnlock>
+
+<!-- Smart Manager -->
+<CscFeature_SmartManager_DisableAntiMalware>true</CscFeature_SmartManager_DisableAntiMalware>
+
+
+<!-- NFC -->
+<CscFeature_NFC_ConfigAdvancedSettings>Disable</CscFeature_NFC_ConfigAdvancedSettings>
+<CscFeature_NFC_DefaultCardModeConfig>DH:ESE</CscFeature_NFC_DefaultCardModeConfig>
+<CscFeature_NFC_DefStatus>ON</CscFeature_NFC_DefStatus>
+
+<!-- WEB -->
+<CscFeature_Web_SetUserAgent>BST</CscFeature_Web_SetUserAgent>
+<CscFeature_Web_SetUAProfile>http://device.sprintpcs.com/Samsung/%s/%s.rdf</CscFeature_Web_SetUAProfile>
+<CscFeature_Web_Bool_EnableDRM>true</CscFeature_Web_Bool_EnableDRM>
+<CscFeature_Web_SetHomepageURL>http://m.boostmobile.com</CscFeature_Web_SetHomepageURL>
+<CscFeature_Web_Str_homeurl>http://m.boostmobile.com</CscFeature_Web_Str_homeurl>
+<CscFeature_Web_Bool_DisableRSS>false</CscFeature_Web_Bool_DisableRSS>
+<CscFeature_Web_Bool_DisableVoiceSearch>false</CscFeature_Web_Bool_DisableVoiceSearch>
+<CscFeature_Web_Bool_DisableRedirectionChooser>false</CscFeature_Web_Bool_DisableRedirectionChooser>
+<CscFeature_Web_Bool_Disable_Chooser_For_APPLICATION_X_APPLICATIONFOLDER>false</CscFeature_Web_Bool_Disable_Chooser_For_APPLICATION_X_APPLICATIONFOLDER>
+<CscFeature_Web_Bool_StartWIFISettingInAirplaneMode>false</CscFeature_Web_Bool_StartWIFISettingInAirplaneMode>
+<CscFeature_Web_Bool_SkipSettingDefaultBookmarkImage>true</CscFeature_Web_Bool_SkipSettingDefaultBookmarkImage>
+<CscFeature_Web_Bool_EnableUAProfile>true</CscFeature_Web_Bool_EnableUAProfile>
+<CscFeature_Web_Bool_UAProfile_withVersion>true</CscFeature_Web_Bool_UAProfile_withVersion>
+<CscFeature_Web_Bool_RemoveVideoDownload>false</CscFeature_Web_Bool_RemoveVideoDownload>
+<CscFeature_Web_Bool_DisableSaveLink>false</CscFeature_Web_Bool_DisableSaveLink>
+<CscFeature_Web_Bool_EnableGateConfig>false</CscFeature_Web_Bool_EnableGateConfig>
+<CscFeature_Web_Bool_OverrideUserAgent>false</CscFeature_Web_Bool_OverrideUserAgent>
+<CscFeature_Web_Bool_EnableClearTodayHistory>false</CscFeature_Web_Bool_EnableClearTodayHistory>
+<CscFeature_Web_Bool_BlockChargeAtHighTemperature>true</CscFeature_Web_Bool_BlockChargeAtHighTemperature>
+<CscFeature_Web_EnableAutoSimHomeUrlInProfile>false</CscFeature_Web_EnableAutoSimHomeUrlInProfile>
+<CscFeature_Web_SetQuickAccessAs>USA</CscFeature_Web_SetQuickAccessAs>
+<CscFeature_Web_ShowBubbleTextNoLayout>true</CscFeature_Web_ShowBubbleTextNoLayout>
+<CscFeature_Web_ConfigSyncSource>TRUE</CscFeature_Web_ConfigSyncSource>
+
+<!-- Email -->
+<CscFeature_Email_UseFixedBgColorAsWhite>true</CscFeature_Email_UseFixedBgColorAsWhite>
+
+<!-- Contacts -->
+<CscFeature_Contact_DisableSIMContacts>true</CscFeature_Contact_DisableSIMContacts>
+<CscFeature_Contact_DoNotSaveEcc>true</CscFeature_Contact_DoNotSaveEcc>
+<CscFeature_Contact_ExtendSpeedDialTo100>true</CscFeature_Contact_ExtendSpeedDialTo100>
+<CscFeature_Contact_DisableSnsInfoInListView>true</CscFeature_Contact_DisableSnsInfoInListView>
+<CscFeature_Contact_DisableAccountIconsInContactList>true</CscFeature_Contact_DisableAccountIconsInContactList>
+<CscFeature_Contact_DisableCallDuration>true</CscFeature_Contact_DisableCallDuration>
+<CscFeature_Contact_DisableMessageLog>true</CscFeature_Contact_DisableMessageLog>
+<CscFeature_Contact_DisableMenuSimExportImport>true</CscFeature_Contact_DisableMenuSimExportImport>
+<CscFeature_Contact_SearchNameIgnoringCommonPrefix>true</CscFeature_Contact_SearchNameIgnoringCommonPrefix>
+<CscFeature_Contact_SetPropertyForPreloadedContact>ReadOnly</CscFeature_Contact_SetPropertyForPreloadedContact>
+<CscFeature_Contact_ConfigTelNumType>RadioType</CscFeature_Contact_ConfigTelNumType>
+<CscFeature_Contact_ConfigOpStyleVariation>BST</CscFeature_Contact_ConfigOpStyleVariation>
+<CscFeature_Contact_LogsViewBy>SPR</CscFeature_Contact_LogsViewBy>
+<CscFeature_Contact_DisableCallForEmergencyLogs>true</CscFeature_Contact_DisableCallForEmergencyLogs>
+<CscFeature_Contact_EnableCnam>true</CscFeature_Contact_EnableCnam>
+<CscFeature_Contact_ShowLocalInfoDuringDial>true</CscFeature_Contact_ShowLocalInfoDuringDial>
+<CscFeature_Contact_DisableCallForEmergencyLogs>true</CscFeature_Contact_DisableCallForEmergencyLogs>
+<CscFeature_Contact_ConfigDialActionChameleonOff>611</CscFeature_Contact_ConfigDialActionChameleonOff>
+<CscFeature_Contact_ConfigActionForDialOneLong>VVM</CscFeature_Contact_ConfigActionForDialOneLong>
+<CscFeature_Contact_ConfigSipCallButton>disable</CscFeature_Contact_ConfigSipCallButton>
+<CscFeature_Contact_ConfigAdditionalGroup>SprintICE</CscFeature_Contact_ConfigAdditionalGroup>
+<CscFeature_Contact_ConfigReplaceLabelSet>sprint</CscFeature_Contact_ConfigReplaceLabelSet>
+
+<!-- Calendar -->
+<CscFeature_Calendar_SetColorOfDays>XXXXXXX</CscFeature_Calendar_SetColorOfDays>
+<CscFeature_Calendar_EnableShiftedWeekNumber>true</CscFeature_Calendar_EnableShiftedWeekNumber>
+
+<!-- Clock -->
+
+<!-- Common -->
+<CscFeature_Common_UseChameleon>true</CscFeature_Common_UseChameleon>
+
+<!-- SEC Launcher -->
+<CscFeature_Launcher_TotalPageCount>3</CscFeature_Launcher_TotalPageCount>
+<CscFeature_Launcher_DefaultPageNumber>0</CscFeature_Launcher_DefaultPageNumber>
+<CscFeature_Launcher_DisableHelpUI>true</CscFeature_Launcher_DisableHelpUI>
+<CscFeature_Launcher_DisableTranslucency>true</CscFeature_Launcher_DisableTranslucency>
+<CscFeature_Launcher_EnableInegratedLauncher>true</CscFeature_Launcher_EnableInegratedLauncher>
+
+<!-- SPR Cocktail bar -->
+<CscFeature_Framework_ConfigDefaultCocktailPanels>com.sec.android.favoriteapps.FavoriteAppsProvider;com.sec.android.operatorpanel.FavoriteAppsProvider;com.samsung.android.app.catchme.briefing.CatchMeCocktailProvider</CscFeature_Framework_ConfigDefaultCocktailPanels>
+
+<!-- SIP -->
+<CscFeature_Sip_DisableMenuKeyboardSwipe>true</CscFeature_Sip_DisableMenuKeyboardSwipe>
+<CscFeature_Sip_ApplyAutoCorrectionPatent>true</CscFeature_Sip_ApplyAutoCorrectionPatent>
+<CscFeature_Sip_DefaultMultiModalKeyAs>VOICE</CscFeature_Sip_DefaultMultiModalKeyAs>
+<CscFeature_Sip_EnableLanguageToggleButton>false</CscFeature_Sip_EnableLanguageToggleButton>
+<CscFeature_Sip_EnableSymbolInSecondary>en_US;es;es_US</CscFeature_Sip_EnableSymbolInSecondary>
+<CscFeature_Sip_KeepDefInputMethodAs>QWERTY</CscFeature_Sip_KeepDefInputMethodAs>
+<CscFeature_Sip_AddCommaKeyAsDefault>true</CscFeature_Sip_AddCommaKeyAsDefault>
+<CscFeature_Sip_ConfigAutoCorrection>OFF</CscFeature_Sip_ConfigAutoCorrection>
+<CscFeature_Sip_EnablePasswordTalkback>false</CscFeature_Sip_EnablePasswordTalkback>
+<CscFeature_Sip_ConfigCMKey>OFF</CscFeature_Sip_ConfigCMKey>
+<CscFeature_Sip_ConfigOpBranding>SPR</CscFeature_Sip_ConfigOpBranding>
+
+<!-- Fota -->
+<CscFeature_SyncML_DefaultLocalConfig>United States,us,310</CscFeature_SyncML_DefaultLocalConfig>
+<CscFeature_SyncML_DisableWarning4DataCostDuringFota>TRUE</CscFeature_SyncML_DisableWarning4DataCostDuringFota>
+<CscFeature_SyncML_ConfigDevicePreId>MEID</CscFeature_SyncML_ConfigDevicePreId>
+
+<!-- SPR Feature Flags -->
+<CscFeature_Common_SupportTriband>true</CscFeature_Common_SupportTriband>
+<CscFeature_Common_EnableSprintExtension>true</CscFeature_Common_EnableSprintExtension>
+<CscFeature_Common_EnableItsOn>true</CscFeature_Common_EnableItsOn>
+<CscFeature_Common_DisableQChat>true</CscFeature_Common_DisableQChat>
+<CscFeature_Framework_2ndScreenConfig>ruler_default_unit,inch;</CscFeature_Framework_2ndScreenConfig>
+<CscFeature_Framework_DisableDoubleTapTextSelection>true</CscFeature_Framework_DisableDoubleTapTextSelection>
+
+<!-- Call -->
+<CscFeature_Common_ConfigNetworkModeDuringEmergency>NOCHANGE</CscFeature_Common_ConfigNetworkModeDuringEmergency>
+
+</FeatureSet>
+</SamsungMobileFeature>

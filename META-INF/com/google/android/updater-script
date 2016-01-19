@@ -1,0 +1,445 @@
+set_progress(0.0);
+ui_print("******************************");
+ui_print("  920P OJ7 Renegade Aroma v1  ");
+ui_print("******************************");
+
+ui_print("- Start Update!");
+ui_print("- Mounting FileSystem");
+
+set_progress(0.1);
+
+ui_print("@Mounting Partitions...");
+run_program("/sbin/mount", "-t", "auto", "/system");
+run_program("/sbin/mount", "-t", "auto", "/data");
+run_program("/sbin/mount", "-t", "auto", "/cache");
+run_program("/sbin/mount", "-t", "auto", "/preload"); 
+
+ui_print("");
+ui_print("- Wipe Cache and Dalvik-Cache...");
+delete_recursive("/cache");
+delete_recursive("/data/dalvik-cache");
+
+ui_print("");
+ui_print("- Format System...");
+delete_recursive("/system");
+
+package_extract_dir("Renegade", "/tmp");
+
+set_progress(0.05);
+
+# Clear Data
+if file_getprop("/tmp/aroma/clear.prop","selected.1") == "1"
+    then
+		ui_print("@ Wiping User Data");
+		package_extract_file("Renegade/wipe.sh", "/tmp/wipe.sh");
+		package_extract_file("Renegade/bash", "/tmp/bash");
+		set_perm(0, 0, 0777, "/tmp/wipe.sh");
+		set_perm(0, 0, 0777, "/tmp/bash");
+		run_program("/tmp/wipe.sh");
+    delete("/tmp/wipe.sh");
+    delete("/tmp/bash");
+	endif;
+	
+ui_print("- Restoring Applications");
+ui_print("- Please Wait...");
+
+set_progress(0.5);
+
+package_extract_dir("system", "/system");
+package_extract_dir("Renegade", "/tmp");
+package_extract_dir("data", "/data");
+	
+	### Launcher
+	
+	# HTC Sense Home
+      if file_getprop("/tmp/aroma/launcher.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing HTC Sense Home");
+	  package_extract_dir("Renegade/launcher/HTC_Sense_Home/system", "/system");
+    endif;
+	
+	# Touchwiz Note 5
+      if file_getprop("/tmp/aroma/launcher.prop","selected.1") == "2"
+    then
+      ui_print("@  Installing Touchwiz Note5");
+	  package_extract_dir("Renegade/launcher/TW_Note5/system", "/system");
+    endif;	
+	
+	# Touchwiz S6 Edge Stock
+      if file_getprop("/tmp/aroma/launcher.prop","selected.1") == "3"
+    then
+      ui_print("@  Installing Touchwiz S6 Stock");
+	  package_extract_dir("Renegade/launcher/TW_S6_Stock/system", "/system");
+    endif;	
+
+	### Deleting Touchwiz data
+      if file_getprop("/tmp/aroma/deletedatatw.prop","selected.1") == "1"
+    then
+      ui_print("@  Deleting Touchwiz data");
+	  delete_recursive("/data/data/com.sec.android.app.launcher");
+    endif;	
+	
+	### SystemUI
+	
+	# Statusbar 3Minit
+      if file_getprop("/tmp/aroma/statusbar.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing Statusbar 3Minit");
+	  package_extract_dir("Renegade/systemui/3minit/system", "/system");
+	endif;
+	
+	# Statusbar 3Minit Center Clock
+      if file_getprop("/tmp/aroma/statusbar.prop","selected.1") == "2"
+    then
+      ui_print("@  Installing Statusbar 3Minit Center Clock");
+	  package_extract_dir("Renegade/systemui/3minitcenter/system", "/system");
+	endif;
+	
+	# Statusbar Stock
+      if file_getprop("/tmp/aroma/statusbar.prop","selected.1") == "3"
+    then
+      ui_print("@  Installing Statusbar Stock");
+	  package_extract_dir("Renegade/systemui/stock/system", "/system");
+	endif;
+	
+	### Xposed
+      if file_getprop("/tmp/aroma/xposed.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing Xposed Framework");
+	  package_extract_dir("Renegade/xposed/system", "/system");
+	  run_program("/tmp/flash-script.sh");
+	  delete("/tmp/flash-script.sh");
+    endif;
+
+	### Viper4Android and Dolby Surround
+      if file_getprop("/tmp/aroma/sound.prop","selected.1") == "1"
+	then
+      ui_print("@  Installing Viper4Android and Dolby Surround");
+	  package_extract_dir("Renegade/dolby/system", "/system");
+	  package_extract_dir("Renegade/viper/system", "/system");
+      package_extract_dir("Renegade/vd/system", "/system");	
+	  delete_recursive("/system/priv-app/SoundAlive_30");
+      delete_recursive("/system/priv-app/SoundAlive_30/SoundAlive_30.apk");
+	endif;
+
+	### Viper4Android
+      if file_getprop("/tmp/aroma/sound.prop","selected.1") == "2"
+	 then
+      ui_print("@  Installing Viper4Android");
+	  package_extract_dir("Renegade/viper/system", "/system");
+	  delete_recursive("/system/priv-app/SoundAlive_30");
+      delete_recursive("/system/priv-app/SoundAlive_30/SoundAlive_30.apk");
+    endif;
+
+	### Dolby Surround
+      if file_getprop("/tmp/aroma/sound.prop","selected.1") == "3"
+	then
+      ui_print("@  Installing Dolby Surround");
+	  package_extract_dir("Renegade/system/dolby", "/system");
+	endif;	
+	
+	### BootAnimation
+	
+	# BootAnimation Renegade
+      if file_getprop("/tmp/aroma/bootanimation.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing BootAnimation Renegade");
+	  package_extract_dir("Renegade/bootanimation/Renegade/system", "/system");
+    endif;	
+
+	# BootAnimation Stock
+      if file_getprop("/tmp/aroma/bootanimation.prop","selected.1") == "2"
+    then
+      ui_print("@  Installing BootAnimation Stock");
+	  package_extract_dir("Renegade/bootanimation/stock/system", "/system");
+    endif;	
+	
+	### Kernel
+	
+	# Kernel v8
+	  if file_getprop("/tmp/aroma/kernel.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing Kernel v8");
+	  package_extract_file("Renegade/kernel/v8/boot.img", "/dev/block/platform/15570000.ufs/by-name/BOOT");
+    endif;	
+	
+	# Kernel v9
+	  if file_getprop("/tmp/aroma/kernel.prop","selected.1") == "2"
+    then
+      ui_print("@  Installing Kernel v9");
+	  package_extract_file("Renegade/kernel/v9/boot.img", "/dev/block/platform/15570000.ufs/by-name/BOOT");
+    endif;	
+	
+	### Splash
+	
+	# Splash Renagade
+	  if file_getprop("/tmp/aroma/splash.prop","selected.1") == "1"
+    then
+      ui_print("@  Installing Splash Renegade");
+	  package_extract_file("Renegade/splash/Renegade/param.bin", "/dev/block/sda7");
+    endif;	
+	
+	# Splash Stock
+	  if file_getprop("/tmp/aroma/splash.prop","selected.1") == "2"
+    then
+      ui_print("@  Installing Splash Stock");
+	  package_extract_file("Renegade/splash/Stock/param.bin", "/dev/block/sda7");
+    endif;	
+	
+ui_print("- Symlinking...");
+ui_print("");
+ui_print("- Settings Symlinks...");
+symlink("app_process64", "/system/bin/app_process");
+symlink("dalvikvm64", "/system/bin/dalvikvm");
+symlink("libGLESv2.so", "/system/lib64/libGLESv3.so");
+symlink("libGLESv2.so", "/system/lib/libGLESv3.so");
+symlink("libOpenCL.so.1.1", "/system/vendor/lib64/libOpenCL.so.1");
+symlink("libOpenCL.so.1.1", "/system/vendor/lib/libOpenCL.so.1");
+symlink("libOpenCL.so.1", "/system/vendor/lib64/libOpenCL.so");
+symlink("libOpenCL.so.1", "/system/vendor/lib/libOpenCL.so");
+symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf");
+symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf");
+symlink("/system/lib64/libaed.so", "/system/app/AdvSoundDetector2015/lib/arm64/libaed.so");
+symlink("/system/lib64/libalgo_wrap.so", "/system/priv-app/SHealth4_3/lib/arm64/libalgo_wrap.so");
+symlink("/system/lib64/libdefcontainer_jni.so", "/system/priv-app/DefaultContainerService/lib/arm64/libdefcontainer_jni.so");
+symlink("/system/lib64/libdemodfsk.so", "/system/priv-app/SHealth4_3/lib/arm64/libdemodfsk.so");
+symlink("/system/lib64/libfdb.so", "/system/app/AdvSoundDetector2015/lib/arm64/libfdb.so");
+symlink("/system/lib64/libgkdp_sv_engine.so", "/system/app/SCService/lib/arm64/libgkdp_sv_engine.so");
+symlink("/system/lib64/libjni_pacprocessor.so", "/system/app/PacProcessor/lib/arm64/libjni_pacprocessor.so");
+symlink("/system/lib64/libload-strings.so", "/system/priv-app/SHealth4_3/lib/arm64/libload-strings.so");
+symlink("/system/lib64/libnfc_nci_jni.so", "/system/app/NfcNci/lib/arm64/libnfc_nci_jni.so");
+symlink("/system/lib64/libPedometer.so", "/system/priv-app/SHealth4_3/lib/arm64/libPedometer.so");
+symlink("/system/lib64/libPlatformStrings.so", "/system/priv-app/HealthService/lib/arm64/libPlatformStrings.so");
+symlink("/system/lib64/libPlatformStrings.so", "/system/priv-app/SHealth4_3/lib/arm64/libPlatformStrings.so");
+symlink("/system/lib64/libprintspooler_jni_mr1.so", "/system/app/SPrintSpoolerLMR1/lib/arm64/libprintspooler_jni_mr1.so");
+symlink("/system/lib64/libSamsungBCPP.so", "/system/app/AdvSoundDetector2015/lib/arm64/libSamsungBCPP.so");
+symlink("/system/lib64/libscservice_jni.so", "/system/app/SCService/lib/arm64/libscservice_jni.so");
+symlink("/system/lib64/libSensorNativeProtocol.so", "/system/priv-app/HealthService/lib/arm64/libSensorNativeProtocol.so");
+symlink("/system/lib64/libSensorNativeProtocol.so", "/system/priv-app/SHealth4_3/lib/arm64/libSensorNativeProtocol.so");
+symlink("/system/lib64/lib_stressanalyzer_v03_jni.so", "/system/priv-app/SHealth4_3/lib/arm64/lib_stressanalyzer_v03_jni.so");
+symlink("/system/lib/libapa_jni.so", "/system/app/SapaMonitor/lib/arm/libapa_jni.so");
+symlink("/system/lib/libasf_fileshareserver.so", "/system/app/AllshareFileShareServer/lib/arm/libasf_fileshareserver.so");
+symlink("/system/lib/libasf_fileshare.so", "/system/app/AllshareFileShare/lib/arm/libasf_fileshare.so");
+symlink("/system/lib/libasf_mediashare.so", "/system/app/AllshareMediaShare/lib/arm/libasf_mediashare.so");
+symlink("/system/lib/libatomcore.so", "/system/priv-app/OutOfFocusViewer_WQHD_K/lib/arm/libatomcore.so");
+symlink("/system/lib/libatomjpeg.so", "/system/priv-app/OutOfFocusViewer_WQHD_K/lib/arm/libatomjpeg.so");
+symlink("/system/lib/libbluetooth_jni.so", "/system/app/Bluetooth/lib/arm/libbluetooth_jni.so");
+symlink("/system/lib/libchameleon.so", "/system/priv-app/Chameleon/lib/arm/libchameleon.so");
+symlink("/system/lib/libcommonpawrapper.so", "/system/app/RootPA/lib/arm/libcommonpawrapper.so");
+symlink("/system/lib/libCreateSceneMap.so", "/system/priv-app/VirtualTourViewer_WQHD_lightTheme/lib/arm/libCreateSceneMap.so");
+symlink("/system/lib/libDioDict3EngineNativeFrame.so", "/system/app/SecDict2Zero/lib/arm/libDioDict3EngineNativeFrame.so");
+symlink("/system/lib/libdioiculemma.so", "/system/app/SecDict2Zero/lib/arm/libdioiculemma.so");
+symlink("/system/lib/libjma.so", "/system/app/SecDict2Zero/lib/arm/libjma.so");
+symlink("/system/lib/liblifevibes_mediashare_hw_jni.so", "/system/priv-app/VoiceNote4Z_32/lib/arm/liblifevibes_mediashare_hw_jni.so");
+symlink("/system/lib/libmorpho_panorama_wa_for_viewer.so", "/system/app/Panorama360Viewer_Zero/lib/arm/libmorpho_panorama_wa_for_viewer.so");
+symlink("/system/lib/libmorpho_sensor_fusion_for_viewer.so", "/system/app/Panorama360Viewer_Zero/lib/arm/libmorpho_sensor_fusion_for_viewer.so");
+symlink("/system/lib/libnltk.so", "/system/app/SecDict2Zero/lib/arm/libnltk.so");
+symlink("/system/lib/libqjpeg_secvision.so", "/system/priv-app/VirtualTourViewer_WQHD_lightTheme/lib/arm/libqjpeg_secvision.so");
+symlink("/system/lib/libSamsungVoiceEngine.so", "/system/priv-app/SVF/lib/arm/libSamsungVoiceEngine.so");
+symlink("/system/lib/libSamsungVoiceEngine.so", "/system/priv-app/S-Voice_Android_phone/lib/arm/libSamsungVoiceEngine.so");
+symlink("/system/lib/libsecipx.so", "/system/priv-app/OutOfFocusViewer_WQHD_K/lib/arm/libsecipx.so");
+symlink("/system/lib/libSensoryUDTSIDEngine.so", "/system/priv-app/S-Voice_Android_phone/lib/arm/libSensoryUDTSIDEngine.so");
+symlink("/system/lib/libSensoryWakeUpEngine.so", "/system/priv-app/S-Voice_Android_phone/lib/arm/libSensoryWakeUpEngine.so");
+symlink("/system/lib/libSRIB_FocusShot.so", "/system/priv-app/OutOfFocusViewer_WQHD_K/lib/arm/libSRIB_FocusShot.so");
+symlink("/system/lib/libstlport_shared.so", "/system/app/SecDict2Zero/lib/arm/libstlport_shared.so");
+symlink("/system/lib/libsvoxtts.so", "/system/priv-app/S-Voice_Android_phone/lib/arm/libsvoxtts.so");
+symlink("/system/lib/libsyncml_sprint.so", "/system/priv-app/SprintDM/lib/arm/libsyncml_sprint.so");
+symlink("/system/lib/libsyncml_sprint.so", "/system/priv-app/SprintSyncMLSvc/lib/arm/libsyncml_sprint.so");
+symlink("/system/lib/libTui.so", "/system/app/TuiService/lib/arm/libTui.so");
+symlink("toolbox", "/system/bin/cat");
+symlink("toolbox", "/system/bin/chcon");
+symlink("toolbox", "/system/bin/chmod");
+symlink("toolbox", "/system/bin/chown");
+symlink("toolbox", "/system/bin/clear");
+symlink("toolbox", "/system/bin/cmp");
+symlink("toolbox", "/system/bin/cp");
+symlink("toolbox", "/system/bin/date");
+symlink("toolbox", "/system/bin/dd");
+symlink("toolbox", "/system/bin/df");
+symlink("toolbox", "/system/bin/dmesg");
+symlink("toolbox", "/system/bin/du");
+symlink("toolbox", "/system/bin/getenforce");
+symlink("toolbox", "/system/bin/getevent");
+symlink("toolbox", "/system/bin/getprop");
+symlink("toolbox", "/system/bin/getsebool");
+symlink("toolbox", "/system/bin/grep");
+symlink("toolbox", "/system/bin/hd");
+symlink("toolbox", "/system/bin/id");
+symlink("toolbox", "/system/bin/ifconfig");
+symlink("toolbox", "/system/bin/iftop");
+symlink("toolbox", "/system/bin/insmod");
+symlink("toolbox", "/system/bin/ioctl");
+symlink("toolbox", "/system/bin/ionice");
+symlink("toolbox", "/system/bin/kill");
+symlink("toolbox", "/system/bin/ln");
+symlink("toolbox", "/system/bin/load_policy");
+symlink("toolbox", "/system/bin/log");
+symlink("toolbox", "/system/bin/ls");
+symlink("toolbox", "/system/bin/lsmod");
+symlink("toolbox", "/system/bin/lsof");
+symlink("toolbox", "/system/bin/md5");
+symlink("toolbox", "/system/bin/mkdir");
+symlink("toolbox", "/system/bin/mknod");
+symlink("toolbox", "/system/bin/mkswap");
+symlink("toolbox", "/system/bin/mount");
+symlink("toolbox", "/system/bin/mv");
+symlink("toolbox", "/system/bin/nandread");
+symlink("toolbox", "/system/bin/netstat");
+symlink("toolbox", "/system/bin/newfs_msdos");
+symlink("toolbox", "/system/bin/nohup");
+symlink("toolbox", "/system/bin/notify");
+symlink("toolbox", "/system/bin/printenv");
+symlink("toolbox", "/system/bin/prlimit");
+symlink("toolbox", "/system/bin/ps");
+symlink("toolbox", "/system/bin/readlink");
+symlink("toolbox", "/system/bin/renice");
+symlink("toolbox", "/system/bin/restorecon");
+symlink("toolbox", "/system/bin/rm");
+symlink("toolbox", "/system/bin/rmdir");
+symlink("toolbox", "/system/bin/rmmod");
+symlink("toolbox", "/system/bin/route");
+symlink("toolbox", "/system/bin/runcon");
+symlink("toolbox", "/system/bin/schedtop");
+symlink("toolbox", "/system/bin/sendevent");
+symlink("toolbox", "/system/bin/setenforce");
+symlink("toolbox", "/system/bin/setprop");
+symlink("toolbox", "/system/bin/setsebool");
+symlink("toolbox", "/system/bin/sleep");
+symlink("toolbox", "/system/bin/smd");
+symlink("toolbox", "/system/bin/start");
+symlink("toolbox", "/system/bin/stop");
+symlink("toolbox", "/system/bin/swapoff");
+symlink("toolbox", "/system/bin/swapon");
+symlink("toolbox", "/system/bin/sync");
+symlink("toolbox", "/system/bin/top");
+symlink("toolbox", "/system/bin/touch");
+symlink("toolbox", "/system/bin/umount");
+symlink("toolbox", "/system/bin/uptime");
+symlink("toolbox", "/system/bin/vmstat");
+symlink("toolbox", "/system/bin/watchprops");
+symlink("toolbox", "/system/bin/wipe");
+symlink("/vendor/lib64/egl/libGLES_mali.so", "/system/vendor/lib64/libOpenCL.so.1.1");
+symlink("/vendor/lib/egl/libGLES_mali.so", "/system/vendor/lib/libOpenCL.so.1.1");
+ui_print("- Done Setting Symlinks...");
+ui_print("");
+ui_print("- Settings Permissions...");
+set_metadata_recursive("/system", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/bin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/androidshmservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:androidshmservice_exec:s0");
+set_metadata("/system/bin/apaservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:apaservice_exec:s0");
+set_metadata("/system/bin/app_process", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:zygote_exec:s0");
+set_metadata("/system/bin/at_distributor", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:at_distributor_exec:s0");
+set_metadata("/system/bin/auditd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:auditd_exec:s0");
+set_metadata("/system/bin/bintvoutservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:bintvoutservice_exec:s0");
+set_metadata("/system/bin/bootanimation", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:bootanim_exec:s0");
+set_metadata("/system/bin/bootchecker", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:bootchecker_exec:s0");
+set_metadata("/system/bin/bugreport", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:bugreport_exec:s0");
+set_metadata("/system/bin/charon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:charon_exec:s0");
+set_metadata("/system/bin/clatd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:clatd_exec:s0");
+set_metadata("/system/bin/connfwexe", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:connfwexe_exec:s0");
+set_metadata("/system/bin/cs", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:cs_exec:s0");
+set_metadata("/system/bin/debuggerd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:debuggerd_exec:s0");
+set_metadata("/system/bin/dhcpcd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:dhcp_exec:s0");
+set_metadata("/system/bin/dnsmasq", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:dnsmasq_exec:s0");
+set_metadata("/system/bin/drmserver", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:drmserver_exec:s0");
+set_metadata("/system/bin/drsd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:drsd_exec:s0");
+set_metadata("/system/bin/dumpstate", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:dumpstate_exec:s0");
+set_metadata("/system/bin/dumpsys", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:dumpsys_exec:s0");
+set_metadata("/system/bin/edmaudit", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:edmaudit_exec:s0");
+set_metadata("/system/bin/hostapd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:hostapd_exec:s0");
+set_metadata("/system/bin/icd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:icd_exec:s0");
+set_metadata("/system/bin/immvibed", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:immvibed_exec:s0");
+set_metadata("/system/bin/installd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:installd_exec:s0");
+set_metadata("/system/bin/insthk", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:insthk_exec:s0");
+set_metadata("/system/bin/iptables", "uid", 0, "gid", 1000, "mode", 0750, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/jackservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:jackservice_exec:s0");
+set_metadata("/system/bin/keystore", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:keystore_exec:s0");
+set_metadata("/system/bin/logwrapper", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:logwrapper_exec:s0");
+set_metadata("/system/bin/mcDriverDaemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:mobicoredaemon_exec:s0");
+set_metadata("/system/bin/mdnsd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:mdnsd_exec:s0");
+set_metadata("/system/bin/mediaserver", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:mediaserver_exec:s0");
+set_metadata("/system/bin/mtpd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:mtp_exec:s0");
+set_metadata("/system/bin/netcfg", "uid", 0, "gid", 3003, "mode", 02750, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/netd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:netd_exec:s0");
+set_metadata("/system/bin/npsmobex", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:mobexdaemon_exec:s0");
+set_metadata("/system/bin/ping", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:ping_exec:s0");
+set_metadata("/system/bin/pppd", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:ppp_exec:s0");
+set_metadata("/system/bin/prepare_param.sh", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:prepare_param_sh_file:s0");
+set_metadata("/system/bin/racoon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:racoon_exec:s0");
+set_metadata("/system/bin/rild", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:rild_exec:s0");
+set_metadata("/system/bin/run-as", "uid", 0, "gid", 2000, "mode", 0750, "capabilities", 0x0, "selabel", "u:object_r:runas_exec:s0");
+set_metadata("/system/bin/samsungpowersoundplay", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:samsungpowersoundplay_exec:s0");
+set_metadata("/system/bin/sdcard", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:sdcardd_exec:s0");
+set_metadata("/system/bin/secure_storage_daemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:secure_storage_exec:s0");
+set_metadata("/system/bin/selinux-network.sh", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:selinux_net_exec:s0");
+set_metadata("/system/bin/sensorhubservice", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:sensorhubservice_exec:s0");
+set_metadata("/system/bin/servicemanager", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:servicemanager_exec:s0");
+set_metadata("/system/bin/smdexe", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:smdexe_exec:s0");
+set_metadata("/system/bin/ss_conn_daemon", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:ss_conn_daemon_exec:s0");
+set_metadata("/system/bin/surfaceflinger", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:surfaceflinger_exec:s0");
+set_metadata("/system/bin/tc", "uid", 0, "gid", 1000, "mode", 0750, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/bin/tima_dump_log", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:tima_dump_exec:s0");
+set_metadata("/system/bin/vold", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:vold_exec:s0");
+set_metadata("/system/bin/wpa_supplicant", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:wpa_exec:s0");
+set_metadata_recursive("/system/etc/bluetooth", "uid", 1002, "gid", 1002, "dmode", 0755, "fmode", 0440, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/etc/bluetooth/auto_pair_devlist.conf", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/etc/bluetooth/bt_did.conf", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/etc/bluetooth/bt_stack.conf", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/etc/dhcpcd", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:dhcp_system_file:s0");
+set_metadata("/system/etc/dhcpcd/dhcpcd-run-hooks", "uid", 1014, "gid", 2000, "mode", 0550, "capabilities", 0x0, "selabel", "u:object_r:dhcp_system_file:s0");
+set_metadata_recursive("/system/etc/ppp", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0555, "capabilities", 0x0, "selabel", "u:object_r:ppp_system_file:s0");
+set_metadata_recursive("/system/lib", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_library_file:s0");
+set_metadata_recursive("/system/vendor", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc/nxp", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc/nxp/BargeIn", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc/nxp/mVoIP", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc/nxp/mVoIPFMC", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/etc/nxp/mVoIPSec", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/firmware", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/lib", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/lib/egl", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/vendor/lib/mediadrm", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/lib/mediadrm/libwvdrmengine.so", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata("/system/vendor/media", "uid", 0, "gid", 2000, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_metadata_recursive("/system/xbin", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+
+set_progress(0.90);
+
+ui_print("- Done Setting Permissions...");
+ui_print("- Patching Deep-Sleep Issues...");
+set_metadata_recursive("/system/su.d", "uid", 0, "gid", 2000, "dmode", 0755, "fmode", 0755, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0");
+set_perm(0, 1000, 0755, "/system/xbin/busybox");
+ui_print("");
+ui_print("- Install SU and Busybox...");
+symlink("/system/xbin/busybox", "/system/bin/busybox");
+run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin");
+run_program("/tmp/install_su.sh");
+delete("/tmp/install_su.sh");
+
+ui_print("- Add Init.d Support...");
+ui_print("");
+ui_print("- Add Init.d Support...");
+set_perm(0, 0, 0777, "/tmp/add_initd.sh");
+run_program("/tmp/add_initd.sh");
+delete("/tmp/add_initd.sh");
+
+set_progress(0.95);
+
+run_program("/tmp/SQLite");
+run_program("/tmp/ZIP");
+delete("/tmp/SQLite");
+delete("/tmp/ZIP");
+
+unmount("/data");
+unmount("/cache");
+unmount("/preload");
+unmount("/system");
+
+set_progress(1.0);
+ui_print("");
+ui_print("******************************************");  
+ui_print("          Installation Complete           ");  
+ui_print("             Team Renegade                "); 
+ui_print("               nyfl2004                   "); 
+ui_print("******************************************");
